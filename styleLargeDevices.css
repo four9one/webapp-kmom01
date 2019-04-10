@@ -1,12 +1,12 @@
 body {
     font-family: 'Lora', serif;
+    width: 500px;
 }
 
 .title {
     font-family: 'Alegreya Sans', sans-serif;
     font-size: 2.4rem;
-    border-bottom: 1px solid #ccc;
-    margin-top: 0;
+    margin-top: 5rem;
 }
 
 .container {
@@ -20,21 +20,21 @@ body {
 }
 
 .container img {
-    width: 100%;
+    width: 500px;
 }
 
 .bottom-nav {
     position: fixed;
-    bottom: 0;
+    top: 0;
+    margin-left: 16px;
     overflow: hidden;
-    border-top: 1px solid #ccc;
-    width: 100%;
-    padding-top: 0.8rem;
-    padding-bottom: 0.8rem;
+    border-bottom: 1px solid #ccc;
+    width: 470px;
+    padding: 1rem;
     background: white;
     display: flex;
     flex-flow: row || nowrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .bottom-nav a {

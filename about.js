@@ -13,9 +13,15 @@ var about = (function () {
 
         var greeting = document.createElement("p");
 
-        greeting.textContent = "Den här hemsidan är ett arbete i kursen webapp," +
+        greeting.innerHTML = "Den här hemsidan är ett arbete i kursen webapp," +
             " som handlar om att skapa tillgängliga och användbara applikationer" +
-            "för mobila enheter.";
+            "för mobila enheter. Sidan är därför lämpligast att se från små enheter." +
+            "<br><br>" +
+            "Sidan används främst för att samla mina redovisningstexter, " +
+            "men du finner även repos från min github." + 
+            "<br><br> Sidan ligger uppe både på BTH:s servrar och en " +
+            "droplet på DigitalOcean som nås med domänen <br><br>" +
+            "<a href='http://trollskogen12.se'>http://trollskogen12.se</a>";
 
         window.mainContainer.appendChild(title);
         window.mainContainer.appendChild(greeting);

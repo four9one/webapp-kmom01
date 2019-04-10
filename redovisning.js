@@ -13,7 +13,12 @@ var redovisning = (function () {
 
         var greeting = document.createElement("p");
 
-        greeting.textContent = "blabla";
+        // greeting.textContent = "textContent här.<br>";
+        greeting.innerHTML = "#<br>#<br>#<br>#<br>#<br>" + 
+        "#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>" +
+        "#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>";
+
+
 
         window.mainContainer.appendChild(title);
         window.mainContainer.appendChild(greeting);

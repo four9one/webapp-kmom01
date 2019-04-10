@@ -7,11 +7,15 @@ var github = (function () {
         window.mainContainer.innerHTML = "";
 
         var title = document.createElement("h1");
+        var desc = document.createElement("p");
 
         title.className = "title";
         title.textContent = "Github";
 
+        desc.innerHTML = "<h4><u>github repositories @ four9one:</h4>";
+
         window.mainContainer.appendChild(title);
+        window.mainContainer.appendChild(desc);
 
         fetch("https://api.github.com/users/four9one/repos").then(function (response) {
             return response.json();
