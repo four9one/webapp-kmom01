@@ -21,9 +21,11 @@ var github = (function () {
             return response.json();
         }).then(function(data) {
             data.forEach(function(repo) {
-                var repoElement = document.createElement("p");
+                var repoElement = document.createElement("a");
 
-                repoElement.textContent = repo.name;
+                repoElement.className = "gitLinks";
+                repoElement.setAttribute('href', "https://github.com/four9one/" + repo.name);
+                repoElement.innerHTML = repo.name + "<br>";
                 window.mainContainer.appendChild(repoElement);
             });
 

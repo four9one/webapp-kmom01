@@ -10,72 +10,63 @@
  *
  */
 window.detectSwipeEvent = function (element, callback) {
-    var swipe_det = {};
-    var min_x = 30;  //min x swipe for horizontal swipe
-    var max_x = 30;  //max x difference for vertical swipe
-    var min_y = 50;  //min y swipe for vertical swipe
-    var max_y = 60;  //max y difference for horizontal swipe
+    var swipeDet = {};
+    var minX = 30;  //min x swipe for horizontal swipe
+    var maxX = 30;  //max x difference for vertical swipe
+    var minY = 50;  //min y swipe for vertical swipe
+    var maxY = 60;  //max y difference for horizontal swipe
     var direction = "";
 
-    swipe_det.sX = 0;
-    swipe_det.sY = 0;
-    swipe_det.eX = 0;
-    swipe_det.eY = 0;
-
-    element.addEventListener("touchstart", function(event){
+    swipeDet.sX = 0;
+    swipeDet.sY = 0;
+    swipeDet.eX = 0;
+    swipeDet.eY = 0;
+    element.addEventListener("touchstart", function(event) {
         var t = event.touches[0];
-        swipe_det.sX = t.screenX;
-        swipe_det.sY = t.screenY;
-    }, false);
 
-    element.addEventListener("touchmove", function(event){
+        swipeDet.sX = t.screenX;
+        swipeDet.sY = t.screenY;
+    }, false);
+    element.addEventListener("touchmove", function(event) {
         //event.preventDefault();
         var t = event.touches[0];
-        swipe_det.eX = t.screenX;
-        swipe_det.eY = t.screenY;
+
+        swipeDet.eX = t.screenX;
+        swipeDet.eY = t.screenY;
     }, false);
 
     element.addEventListener("touchend", function(/* event */) {
-
         // horizontal detection
-        if ((((swipe_det.eX - min_x > swipe_det.sX)
-            || (swipe_det.eX + min_x < swipe_det.sX))
-            && ((swipe_det.eY < swipe_det.sY + max_y)
-            && (swipe_det.sY > swipe_det.eY - max_y)
-            && (swipe_det.eX > 0))))
-        {
-            if (swipe_det.eX > swipe_det.sX) {
+        if ((((swipeDet.eX - minX > swipeDet.sX)
+            || (swipeDet.eX + minX < swipeDet.sX))
+            && ((swipeDet.eY < swipeDet.sY + maxY)
+            && (swipeDet.sY > swipeDet.eY - maxY)
+            && (swipeDet.eX > 0)))) {
+            if (swipeDet.eX > swipeDet.sX) {
                 direction = "right";
             } else {
                 direction = "left";
             }
-        }
-
-        // vertical detection
-        else if ((((swipe_det.eY - min_y > swipe_det.sY)
-            || (swipe_det.eY + min_y < swipe_det.sY))
-            && ((swipe_det.eX < swipe_det.sX + max_x)
-            && (swipe_det.sX > swipe_det.eX - max_x)
-            && (swipe_det.eY > 0))))
-        {
-            if (swipe_det.eY > swipe_det.sY) {
+        } else if ((((swipeDet.eY - minY > swipeDet.sY)
+            || (swipeDet.eY + minY < swipeDet.sY))
+            && ((swipeDet.eX < swipeDet.sX + maxX)
+            && (swipeDet.sX > swipeDet.eX - maxX)
+            && (swipeDet.eY > 0)))) {
+            if (swipeDet.eY > swipeDet.sY) {
                 direction = "down";
             } else {
                 direction = "up";
             }
         }
-
         if (direction !== "") {
             if (typeof callback == "function") {
                 callback(element, direction);
             }
-
             direction = "";
-            swipe_det.sX = 0;
-            swipe_det.sY = 0;
-            swipe_det.eX = 0;
-            swipe_det.eY = 0;
+            swipeDet.sX = 0;
+            swipeDet.sY = 0;
+            swipeDet.eX = 0;
+            swipeDet.eY = 0;
         }
-
     }, false);
 };
